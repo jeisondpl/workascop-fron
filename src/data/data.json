@@ -1,0 +1,44 @@
+data = [
+    {
+      id: 1,
+      video: 'como hacer split en react js a vector',
+      fecha: '6 de sep. 2021',
+      numero: 32,
+      imagen: logo,
+    },
+    {
+      id: 2,
+      video: 'como hacer split en react js a vector',
+      fecha: '6 de sep. 2021',
+      numero: 32,
+      imagen: logo,
+    },
+    {
+      id: 3,
+      video: 'como hacer split en react js a vector',
+      fecha: '6 de sep. 2021',
+      numero: 32,
+      imagen: logo,
+    },
+    {
+      id: 4,
+      video: 'como hacer split en react js a vector',
+      fecha: '6 de sep. 2021',
+      numero: 32,
+      imagen: logo,
+    },
+    {
+      id: 5,
+      video: 'como hacer split en react js a vector',
+      fecha: '6 de sep. 2021',
+      numero: 32,
+      imagen: logo,
+    },
+    {
+      id: 6,
+      video: 'como hacer split en react js a vector',
+      fecha: '6 de sep. 2021',
+      numero: 32,
+      imagen: logo,
+    },
+  ]

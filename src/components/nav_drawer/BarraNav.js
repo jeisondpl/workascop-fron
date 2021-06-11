@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { makeStyles, Toolbar, IconButton, Typography, AppBar, Badge, Button } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
+import { useHistory, useLocation } from 'react-router-dom'
 
 const drawerWidth = 240
 
@@ -74,7 +75,10 @@ const useStyles = makeStyles((theme) => ({
 
 const BarraNav = ({ handleDrawerOpen, open }) => {
   const classes = useStyles()
-
+  const history = useHistory()
+  const handleSalir = () => {
+    history.push('/login')
+  }
   return (
     <AppBar
       position='fixed'
@@ -102,8 +106,8 @@ const BarraNav = ({ handleDrawerOpen, open }) => {
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <Button variant='text' color='inherit'>
-          Login
+        <Button variant='text' color='inherit' onClick={handleSalir}>
+          Salir
         </Button>
       </Toolbar>
     </AppBar>

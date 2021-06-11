@@ -5,18 +5,20 @@ import Title from './Title'
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
-    margin:'5px'
+    margin: '3px',
+    height: '150px',
   },
   bullet: {
     display: 'inline-block',
-    margin: '0 2px',
+    margin: '0 0px',
     transform: 'scale(0.8)',
   },
   title: {
     fontSize: 14,
   },
   pos: {
-    marginBottom: 12,
+    marginBottom: 0,
+    fontSize: '11px',
   },
 })
 
@@ -26,9 +28,12 @@ const Cards = ({ titulo, valor, fecha, isporc }) => {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Title>{titulo}</Title>
-        <Typography variant='h5' component='h2'>
-          {valor}
+        <Typography variant='h6' component='h2'>
+          {titulo}
+        </Typography>
+
+        <Typography variant='h6' component='h2'>
+          {isporc ? `${valor}%` : `$${valor}`}
         </Typography>
         <Typography className={classes.pos} color='textSecondary'>
           {fecha}

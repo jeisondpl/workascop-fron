@@ -44,7 +44,7 @@ export default function Contenedor(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Container maxWidth='lg' className={classes.container}>
+        <Container maxWidth='md' className={classes.container}>
           {props.children}
         </Container>
       </main>

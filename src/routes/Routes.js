@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Servicios from '../page/Servicios'
 import Liquidacion from '../page/liquidacion/Liquidacion'
 import Home from '../page/Home'
+import SignInSide from '../page/login/SignInSide'
 
 function Routes() {
   return (
@@ -16,6 +17,9 @@ function Routes() {
         </Route>
         <Route exact path='/liquidacion'>
           <Liquidacion />
+        </Route>
+        <Route exact path='/login'>
+          <SignInSide />
         </Route>
       </Switch>
     </BrowserRouter>

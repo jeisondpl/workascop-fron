@@ -59,7 +59,6 @@ const Servicios = () => {
   }
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
-
   return (
     <Contenedor>
       <Title>Servicios</Title>
@@ -72,7 +71,7 @@ const Servicios = () => {
             <ServiciosForm notifyError={notifyError} />
             <ServicioEdit notifyError={notifyError} />
             <Grid className={classes.separador} item xs={12} sm={6} md={2} lg={2} xl={2}>
-              <Paper className={fixedHeightPaper}>{servicio && <Deposits titulo={servicio.nombre} valor={servicio.id} fecha='2021-05-10' isporc={false} />}</Paper>
+              <Paper className={fixedHeightPaper}>{servicio && <Deposits titulo={servicio.nombre} valor='nada' fecha='2021-05-10' isporc={false} />}</Paper>
             </Grid>
           </Grid>
         </Grid>
@@ -85,7 +84,7 @@ const Servicios = () => {
                 datos.map((item) => (
                   <Grid item xs={12} sm={6} md={2} lg={2} xl={2} key={item.id}>
                     <Paper className={fixedHeightPaper}>
-                      <Deposits titulo={item.nombre} valor={item.id} fecha='2021-05-10' isporc={false} />
+                      <Deposits titulo={item.nombre} valor={item.nombre} fecha='2021-05-10' isporc={false} />
                       <Link
                         href='#'
                         onClick={() => {

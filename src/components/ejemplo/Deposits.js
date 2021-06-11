@@ -25,7 +25,6 @@ export default function Deposits({ titulo, valor, fecha, isporc }) {
       <Box display='flex' justifyContent='center' m={0} p={0}>
         <Box p={0}>
           <Typography justify='center' component='p' variant='h4' className={classes.depositContext}>
-            {/* {isporc?'%':'$'} */}
             {valor}
           </Typography>
         </Box>

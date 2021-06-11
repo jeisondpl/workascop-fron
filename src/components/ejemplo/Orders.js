@@ -7,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Title from './Title'
+import { Box } from '@material-ui/core'
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -34,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Orders() {
   const classes = useStyles()
   return (
-    <React.Fragment>
-      <Title>Recent Orders</Title>
+    <Box p={2}>
+      <Title>órdenes recientes</Title>
       <Table size='small'>
         <TableHead>
           <TableRow>
@@ -60,9 +61,9 @@ export default function Orders() {
       </Table>
       <div className={classes.seeMore}>
         <Link color='primary' href='#' onClick={preventDefault}>
-          See more orders
+         Ver más pedidos
         </Link>
       </div>
-    </React.Fragment>
+    </Box>
   )
 }

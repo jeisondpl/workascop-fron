@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 export default function Title({children}) {
   const classes = useStyles()
   return (
-    <Typography className={classes.titulo} component='h2' variant='h6' color='primary' gutterBottom>
+    <Typography className={classes.titulo} component='h2' variant='69' color='primary' gutterBottom>
       {children}
     </Typography>
   )

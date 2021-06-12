@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles, Grid, Container } from '@material-ui/core'
 import clsx from 'clsx'
 import Deposits from '../components/ejemplo/Deposits'
 import Paper from '@material-ui/core/Paper'
 import Contenedor from '../components/Contenedor'
-import Chart from '../components/ejemplo/Chart'
 import Orders from '../components/ejemplo/Orders'
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+
   return (
     <Contenedor>
       <Container maxWidth='lg' className={classes.container}>

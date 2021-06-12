@@ -9,6 +9,6 @@ export const CalculoLiquidacion = ({ sueldo, data }) => {
   const [sena, setSena] = useState(0)
   const [icbf, setIcbf] = useState(0)
 
-  console.log(data)
+  // console.log(data)
   return { validacionIT, salud, pencion, porcArl, caja, sena, icbf }
 }

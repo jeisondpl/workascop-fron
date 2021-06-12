@@ -13,7 +13,7 @@ import RetencionFuente from '../../components/liquidacion/RetencionFuente'
 import SeguridadSocials from '../../components/liquidacion/SeguridadSocials'
 import Acordeon from '../../components/liquidacion/Acordeon'
 import Papers from '../../components/Papers'
-import { CalculoLiquidacion } from '../../components/CalculoLiquidacion'
+import { CalculoLiquidacion } from '../../components/liquidacion/CalculoLiquidacion'
 
 const useStyles = makeStyles((theme) => ({
   root: {

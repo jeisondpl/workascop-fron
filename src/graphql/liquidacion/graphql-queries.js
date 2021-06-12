@@ -143,5 +143,29 @@ export const ALL_BASE_LIQUIDACION = gql`
       fecha
       __typename
     }
+    recargos {
+      createdAt
+      updatedAt
+      id
+      factorNocturno
+      factorFestivo
+      factorDominical
+      jornadaInicial
+      jornadaFinal
+      fecha
+      __typename
+    }
+    recargosLast {
+      createdAt
+      updatedAt
+      id
+      factorNocturno
+      factorFestivo
+      factorDominical
+      jornadaInicial
+      jornadaFinal
+      fecha
+      __typename
+    }
   }
 `

@@ -7,8 +7,10 @@ import { ApolloClient, InMemoryCache } from '@apollo/client'
 //cliente para el endpoint
 const client = new ApolloClient({
   connectToDevTools: true,
-  uri: 'http://127.0.0.1:8000/graphql/',
+  // uri: 'http://127.0.0.1:8000/graphql/',
+  uri: 'https://workas.herokuapp.com/graphql/',
   // uri: 'http://www.workascop.com/graphql/',
+  
   cache: new InMemoryCache(),
 })
 

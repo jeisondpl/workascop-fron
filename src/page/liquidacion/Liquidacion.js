@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { makeStyles, Divider, Grid, Box, FormControl, InputLabel, Typography, Paper } from '@material-ui/core'
+import { makeStyles, Divider, Grid, Box, FormControl, InputLabel, Typography, Paper, Input, FormHelperText, Button, TextField } from '@material-ui/core'
 import Contenedor from '../../components/Contenedor'
 import Title from '../../components/ejemplo/Title'
 import FormSearchUser from '../../components/form/FormSearchUser'
@@ -60,10 +60,11 @@ const useStyles = makeStyles((theme) => ({
 const Index = () => {
   const classes = useStyles()
   const [datos, setDatos] = useState([])
+  const [expanded, setExpanded] = useState(false)
+  const [total, setTotal] = useState('')
 
   //all values liquidacion
   const { data, loading, error } = useAllLiquidacion()
-  const { validacionIT } = CalculoLiquidacion({ sueldo: 0, data: datos })
 
   //recibe lista de valores de liquidacion
   useEffect(() => {
@@ -72,18 +73,18 @@ const Index = () => {
     }
   }, [data])
 
-  console.log('este', datos && 'ok')
+  const handleChangeAcordeon = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false)
+  }
 
   if (error !== undefined) {
     console.log('Error ', error)
   }
 
-  const handleSearchUser = (idUser) => {
-    console.log('idUser : ', idUser)
-  }
-  const [expanded, setExpanded] = useState(false)
-  const handleChangeAcordeon = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false)
+  // -------------------------------------------
+  const hadleCalcular = () => {
+    const { acumulado, valor_hora } = CalculoLiquidacion({ total: total, data: datos })
+    console.log(acumulado)
   }
 
   return (
@@ -94,7 +95,39 @@ const Index = () => {
         {/* col-6 */}
         <Grid className={classes.col} container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
           <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
-            <FormSearchUser handleSearchUser={handleSearchUser} />
+            {/* FORMULARIO DE LIQUIDACION */}
+            <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6}>
+              {/* <FormControl>
+                <InputLabel htmlFor='my-input'>C.c. Empleado</InputLabel>
+                <Input id='my-input' aria-describedby='my-helper-text' value={total} onChange={(evt) => setTotal(evt.target.value)} />
+                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+                <FormHelperText id='my-helper-text'>Id del colaborador</FormHelperText>
+              </FormControl> */}
+
+              <TextField
+                id='standard-number'
+                label='Acumulado'
+                type='number'
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                value={total}
+                onChange={(evt) => setTotal(evt.target.value)}
+              />
+
+              <Button color='primary' type='submit' variant='outlined' onClick={hadleCalcular} style={{ marginTop: '10px', marginLeft: '15px' }}>
+                Liquidar
+              </Button>
+            </Grid>
+            <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6}>
+              <Papers height={100}>
+                <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Typography variant='h5' color='textPrimary' gutterBottom>
+                    Total $ {total}
+                  </Typography>
+                </Grid>
+              </Papers>
+            </Grid>
           </Grid>
           <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
             <Title>Calculo</Title>

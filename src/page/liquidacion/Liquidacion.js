@@ -71,10 +71,12 @@ const Index = () => {
       setDatos(data)
     }
   }, [data])
-  console.log("este",datos)
-  // if (data !== undefined) {
+  
+  console.log('este', datos)
 
-  // }
+  if (error !== undefined) {
+    console.log('Error ', error)
+  }
 
   const handleSearchUser = (idUser) => {
     console.log('idUser : ', idUser)
@@ -186,37 +188,34 @@ const Index = () => {
         {/* col-6  */}
         <Grid className={classes.col} container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
           <Title>Datos base</Title>
-         
-          {datos.length > 0 ?(
 
+          {datos.length > 0 ? (
             <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
-            <Acordeon title='Ingreso base de liquidacion' name='panel1' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-              <Ibl loading={loading} data={data} />
-            </Acordeon>
-            <Acordeon title='Riesgos laborales' name='panel2' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-              <Arl loading={loading} data={data} />
-            </Acordeon>
-            <Acordeon title='Parafiscales' name='panel3' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-              <Parafiscales loading={loading} data={data} />
-            </Acordeon>
-            <Acordeon title='Prestaciones' name='panel4' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-              <Prestacion loading={loading} data={data} />
-            </Acordeon>
-            <Acordeon title='Piso seguridad social' name='panel5' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-              <PisoSeguridadSocial loading={loading} data={data} />
-            </Acordeon>
-            <Acordeon title='Retencion fuente' name='panel6' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-              <RetencionFuente loading={loading} data={data} />
-            </Acordeon>
-            <Acordeon title='Seguridad social' name='panel7' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-              <SeguridadSocials loading={loading} data={data} />
-            </Acordeon>
-          </Grid>
-          ):(<p>Sin conexion al servidor</p>)}
-         
-         
-         
-      
+              <Acordeon title='Ingreso base de liquidacion' name='panel1' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                <Ibl loading={loading} data={data} />
+              </Acordeon>
+              <Acordeon title='Riesgos laborales' name='panel2' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                <Arl loading={loading} data={data} />
+              </Acordeon>
+              <Acordeon title='Parafiscales' name='panel3' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                <Parafiscales loading={loading} data={data} />
+              </Acordeon>
+              <Acordeon title='Prestaciones' name='panel4' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                <Prestacion loading={loading} data={data} />
+              </Acordeon>
+              <Acordeon title='Piso seguridad social' name='panel5' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                <PisoSeguridadSocial loading={loading} data={data} />
+              </Acordeon>
+              <Acordeon title='Retencion fuente' name='panel6' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                <RetencionFuente loading={loading} data={data} />
+              </Acordeon>
+              <Acordeon title='Seguridad social' name='panel7' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                <SeguridadSocials loading={loading} data={data} />
+              </Acordeon>
+            </Grid>
+          ) : (
+            <p>Sin conexion al servidor</p>
+          )}
         </Grid>
       </Grid>
     </Contenedor>

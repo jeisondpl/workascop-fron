@@ -12,3 +12,8 @@
 //     const onclick = EJECUCION[pregunta]||ejecucionDefaul
 //       console.log(onclick)
 //   }
+
+// import { unstable_batchedUpdates } from 'react-dom'
+// unstable_batchedUpdates(()={
+//     //useEstates
+//   })

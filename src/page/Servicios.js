@@ -10,6 +10,7 @@ import { useServicio, useFindServicio } from '../graphql/custom-hooks'
 import Notyfy from '../components/notyfy/Notyfy'
 import ServicioEdit from './ServicioEdit'
 
+
 const useStyles = makeStyles((theme) => ({
   containers: {
     paddingTop: '30px',
@@ -46,6 +47,8 @@ const Servicios = () => {
 
   //recibe lista de servicios
   useEffect(() => {
+
+  
     if (data !== undefined) {
       const { servicios } = data
       setDatos(servicios)

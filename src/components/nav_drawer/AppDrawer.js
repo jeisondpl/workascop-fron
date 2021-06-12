@@ -83,7 +83,7 @@ const AppDrawer = ({ handleDrawerClose, open }) => {
   const handleGoToPage = (page) => {
     //no abrir page mas de una vez
     if (pathname.search(page) !== 1) {
-      if (page === 'home') history.push('/')
+      if (page === 'home') history.push('/home')
       else history.push(page)
     }
   }

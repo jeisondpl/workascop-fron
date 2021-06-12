@@ -77,7 +77,7 @@ const BarraNav = ({ handleDrawerOpen, open }) => {
   const classes = useStyles()
   const history = useHistory()
   const handleSalir = () => {
-    history.push('/login')
+    history.push('/')
   }
   return (
     <AppBar

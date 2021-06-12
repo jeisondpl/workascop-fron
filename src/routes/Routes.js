@@ -9,7 +9,7 @@ function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path='/home'>
           <Home />
         </Route>
         <Route exact path='/servicios'>
@@ -18,7 +18,7 @@ function Routes() {
         <Route exact path='/liquidacion'>
           <Liquidacion />
         </Route>
-        <Route exact path='/login'>
+        <Route exact path='/'>
           <SignInSide />
         </Route>
       </Switch>

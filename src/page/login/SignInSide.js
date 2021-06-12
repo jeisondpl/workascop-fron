@@ -72,7 +72,7 @@ export default function SignInSide() {
   }
 
   const handleIniciar = () => {
-    history.push('/')
+    history.push('/home')
   }
 
   return (

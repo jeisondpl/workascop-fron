@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, makeStyles } from '@material-ui/core'
-import Title from '../../components/ejemplo/Title'
-import Cards from '../../components/ejemplo/Cards'
+import Title from '../ejemplo/Title'
+import Cards from '../ejemplo/Cards'
 
 const useStyles = makeStyles((theme) => ({
   col: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Prestacion = ({ loading, data }) => {
+const Recargos = ({ loading, data }) => {
   const classes = useStyles()
 
   return (
@@ -19,8 +19,8 @@ const Prestacion = ({ loading, data }) => {
           <p>Loading...</p>
         ) : (
           <>
-            {data.prestacionLast &&
-              data.prestacionLast.map((item) => (
+            {data.prestacion &&
+              data.recargosLast.map((item) => (
                 <>
                   <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6}>
                     <Cards titulo='Cesantia' valor={item.porcCesantia} isporc={true} fecha={item.fecha} />
@@ -43,4 +43,4 @@ const Prestacion = ({ loading, data }) => {
   )
 }
 
-export default Prestacion
+export default Recargos

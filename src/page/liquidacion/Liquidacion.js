@@ -64,7 +64,6 @@ const Index = () => {
   //all values liquidacion
   const { data, loading, error } = useAllLiquidacion()
   const { validacionIT } = CalculoLiquidacion({ sueldo: 0, data: datos })
-  console.log(validacionIT)
 
   //recibe lista de valores de liquidacion
   useEffect(() => {
@@ -72,7 +71,7 @@ const Index = () => {
       setDatos(data)
     }
   }, [data])
-
+  console.log("este",datos)
   // if (data !== undefined) {
 
   // }
@@ -188,7 +187,7 @@ const Index = () => {
         <Grid className={classes.col} container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
           <Title>Datos base</Title>
          
-          {datos &&(
+          {datos.length > 0 ?(
 
             <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
             <Acordeon title='Ingreso base de liquidacion' name='panel1' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
@@ -213,9 +212,7 @@ const Index = () => {
               <SeguridadSocials loading={loading} data={data} />
             </Acordeon>
           </Grid>
-
-
-          )}
+          ):(<p>Sin conexion al servidor</p>)}
          
          
          

@@ -187,7 +187,10 @@ const Index = () => {
         {/* col-6  */}
         <Grid className={classes.col} container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
           <Title>Datos base</Title>
-          <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
+         
+          {datos &&(
+
+            <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
             <Acordeon title='Ingreso base de liquidacion' name='panel1' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
               <Ibl loading={loading} data={data} />
             </Acordeon>
@@ -210,6 +213,13 @@ const Index = () => {
               <SeguridadSocials loading={loading} data={data} />
             </Acordeon>
           </Grid>
+
+
+          )}
+         
+         
+         
+      
         </Grid>
       </Grid>
     </Contenedor>

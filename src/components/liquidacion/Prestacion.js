@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid, makeStyles } from '@material-ui/core'
 import Title from '../../components/ejemplo/Title'
 import Cards from '../../components/ejemplo/Cards'
+import Alertmessage from '../alert/Alertmessage'
 
 const useStyles = makeStyles((theme) => ({
   col: {
@@ -19,7 +20,7 @@ const Prestacion = ({ loading, data }) => {
           <p>Loading...</p>
         ) : (
           <>
-            {data.prestacionLast &&
+            {data ? (
               data.prestacionLast.map((item) => (
                 <>
                   <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6}>
@@ -35,7 +36,10 @@ const Prestacion = ({ loading, data }) => {
                     <Cards titulo='Vacaciones' valor={item.porcVacaciones} isporc={true} fecha={item.fecha} />
                   </Grid>
                 </>
-              ))}
+              ))
+            ) : (
+              <Alertmessage message='Sin conexion al servidor' />
+            )}
           </>
         )}
       </Grid>

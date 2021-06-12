@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid, makeStyles } from '@material-ui/core'
 import Title from '../../components/ejemplo/Title'
 import Cards from '../../components/ejemplo/Cards'
+import Alertmessage from '../alert/Alertmessage'
 
 const useStyles = makeStyles((theme) => ({
   col: {
@@ -18,14 +19,17 @@ const RetencionFuente = ({ loading, data }) => {
           <p>Loading...</p>
         ) : (
           <>
-            {data.retencionFuenteLast &&
+            {data ? (
               data.retencionFuenteLast.map((item) => (
                 <>
                   <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
                     <Cards titulo='Proc Retefuente' valor={item.porcRetefuente} isporc={true} fecha={item.fecha} />
                   </Grid>
                 </>
-              ))}
+              ))
+            ) : (
+              <Alertmessage message='Sin conexion al servidor' />
+            )}
           </>
         )}
       </Grid>

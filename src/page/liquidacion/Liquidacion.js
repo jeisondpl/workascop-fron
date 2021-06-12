@@ -71,8 +71,8 @@ const Index = () => {
       setDatos(data)
     }
   }, [data])
-  
-  console.log('este', datos)
+
+  console.log('este', datos && 'ok')
 
   if (error !== undefined) {
     console.log('Error ', error)
@@ -189,7 +189,7 @@ const Index = () => {
         <Grid className={classes.col} container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
           <Title>Datos base</Title>
 
-          {datos.length > 0 ? (
+          {datos !== undefined ? (
             <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
               <Acordeon title='Ingreso base de liquidacion' name='panel1' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
                 <Ibl loading={loading} data={data} />

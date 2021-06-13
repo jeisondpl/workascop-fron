@@ -9,7 +9,7 @@ import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-u
 
 const LIST_DRAWER_3 = [
   { id: 1, nombre: 'home', icon: ()=> <HomeIcon /> },
-  { id: 2, nombre: 'Servicios', icon: ()=> <ContactPhoneIcon /> },
+  { id: 2, nombre: 'servicios', icon: ()=> <ContactPhoneIcon /> },
   { id: 3, nombre: 'liquidacion', icon: ()=> <ListAltIcon /> },
   { id: 4, nombre: 'config', icon: ()=> <InboxIcon /> },
 ]

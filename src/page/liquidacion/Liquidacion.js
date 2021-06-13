@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import clsx from 'clsx'
 import { makeStyles, Divider, Grid, Box, FormControl, InputLabel, Typography, Paper, Input, FormHelperText, Button, TextField } from '@material-ui/core'
 import Contenedor from '../../components/Contenedor'
 import Title from '../../components/ejemplo/Title'
@@ -14,6 +15,8 @@ import SeguridadSocials from '../../components/liquidacion/SeguridadSocials'
 import Acordeon from '../../components/liquidacion/Acordeon'
 import Papers from '../../components/Papers'
 import { CalculoLiquidacion } from '../../components/liquidacion/CalculoLiquidacion'
+import Recargos from '../../components/liquidacion/Recargos'
+import RecipeReviewCard from '../../components/ejemplo/RecipeReviewCard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,18 +26,7 @@ const useStyles = makeStyles((theme) => ({
   separador: {
     marginTop: '30px',
   },
-  paper: {
-    marginTop: '20px',
-    padding: theme.spacing(3),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-    margin: '5px',
-  },
 
-  fixedHeight: {
-    height: 300,
-  },
   col: {
     padding: '10px',
     marginTop: '30px',
@@ -55,13 +47,23 @@ const useStyles = makeStyles((theme) => ({
   box: {
     flexGrow: 1,
   },
+  paper: {
+    padding: theme.spacing(2),
+    overflow: 'auto',
+    flexDirection: 'column',
+    flexGrow: 1,
+  },
+  fixedHeight: {
+    height: 160,
+  },
 }))
-
 const Index = () => {
   const classes = useStyles()
   const [datos, setDatos] = useState([])
   const [expanded, setExpanded] = useState(false)
   const [total, setTotal] = useState('')
+
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   //all values liquidacion
   const { data, loading, error } = useAllLiquidacion()
@@ -92,131 +94,53 @@ const Index = () => {
       <Title>Liquidacion</Title>
       <Divider />
       <Grid container spacing={2}>
-        {/* col-6 */}
+        {/* input */}
+        <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
+          <TextField
+            id='standard-number'
+            label='Cedula'
+            type='number'
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={total}
+            onChange={(evt) => setTotal(evt.target.value)}
+          />
+          <Button color='primary' type='submit' variant='outlined' onClick={hadleCalcular} style={{ marginTop: '10px', marginLeft: '15px' }}>
+            Liquidar
+          </Button>
+        </Grid>
+
+        {/* header */}
         <Grid className={classes.col} container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
-            {/* FORMULARIO DE LIQUIDACION */}
-            <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6}>
-              {/* <FormControl>
-                <InputLabel htmlFor='my-input'>C.c. Empleado</InputLabel>
-                <Input id='my-input' aria-describedby='my-helper-text' value={total} onChange={(evt) => setTotal(evt.target.value)} />
-                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-                <FormHelperText id='my-helper-text'>Id del colaborador</FormHelperText>
-              </FormControl> */}
-
-              <TextField
-                id='standard-number'
-                label='Acumulado'
-                type='number'
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                value={total}
-                onChange={(evt) => setTotal(evt.target.value)}
-              />
-
-              <Button color='primary' type='submit' variant='outlined' onClick={hadleCalcular} style={{ marginTop: '10px', marginLeft: '15px' }}>
-                Liquidar
-              </Button>
-            </Grid>
-            <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6}>
-              <Papers height={100}>
-                <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <Typography variant='h5' color='textPrimary' gutterBottom>
-                    Total $ {total}
-                  </Typography>
-                </Grid>
-              </Papers>
-            </Grid>
+          <Paper className={fixedHeightPaper}>
+            <Title>Datos Generales</Title>
+            <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
+              Identificacion
+            </Typography>
+            <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
+              Nombre colaborador
+            </Typography>
+            <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
+              Valor total
+            </Typography>
+          </Paper>
+        </Grid>
+      
+        {/* card */}
+        <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
+          <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
+            <RecipeReviewCard servicio='Limpieza de Piscinas' codigociiu='8129' arl='IV' abc='L' />
           </Grid>
-          <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
-            <Title>Calculo</Title>
+          <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
+            <RecipeReviewCard servicio='Instrumentos Musicales' codigociiu='9529' arl='II' abc='I' />
           </Grid>
-
-          <Papers height={300}>
-            <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Total laborado
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  $550.000
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Total laborado
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  $550.000
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Total laborado
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  $550.000
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Total laborado
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  $550.000
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Total laborado
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  $550.000
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Total laborado
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  $550.000
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Total laborado
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  $550.000
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Total laborado
-                </Typography>
-              </Grid>
-              <Grid xs={12} sm={6} md={6} lg={6} xl={6}>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  $550.000
-                </Typography>
-              </Grid>
-            </Grid>
-          </Papers>
+          <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
+            <RecipeReviewCard servicio='Edición de videos' codigociiu='5912' arl='II' abc='E' />
+          </Grid>
+          <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
+            <RecipeReviewCard servicio='Entrenador Deportivo' codigociiu='8552' arl='I' abc='D' />
+          </Grid>
         </Grid>
         {/* col-6  */}
         <Grid className={classes.col} container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -244,6 +168,9 @@ const Index = () => {
               </Acordeon>
               <Acordeon title='Seguridad social' name='panel7' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
                 <SeguridadSocials loading={loading} data={data} />
+              </Acordeon>
+              <Acordeon title='Recargo' name='panel8' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                <Recargos loading={loading} data={data} />
               </Acordeon>
             </Grid>
           ) : (

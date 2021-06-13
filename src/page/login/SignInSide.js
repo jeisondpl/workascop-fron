@@ -72,7 +72,7 @@ export default function SignInSide() {
   }
 
   const handleIniciar = () => {
-    history.push('/home')
+    history.push('/liquidacion')
   }
 
   return (

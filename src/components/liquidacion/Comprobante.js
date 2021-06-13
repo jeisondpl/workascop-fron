@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, makeStyles, CardContent, Typography, CardActions, Button } from '@material-ui/core'
+import Title from './Title'
 
 const useStyles = makeStyles({
   root: {
@@ -17,15 +18,16 @@ const useStyles = makeStyles({
   },
 })
 
-const Cards = ({ titulo, valor, fecha, isporc = '' }) => {
+const Comprobante = ({ titulo, valor, fecha, isporc = '' }) => {
   const classes = useStyles()
   return (
+    <Title>Liquidacion</Title>
+    <Divider />
     <Card className={classes.root}>
       <CardContent>
         <Typography variant='h6' color='textSecondary'>
           {titulo}
         </Typography>
-
         <Typography variant='h6' component='h2' className={classes.text2}>
           {isporc ? `${valor}%` : isporc === '' ? valor : `$${valor}`}
         </Typography>
@@ -33,10 +35,11 @@ const Cards = ({ titulo, valor, fecha, isporc = '' }) => {
           {fecha}
         </Typography>
       </CardContent>
-      {/* <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
+      <CardActions>
+        <Button size='small'>Learn More</Button>
+      </CardActions>
     </Card>
   )
 }
-export default Cards
+
+export default Comprobante

@@ -81,11 +81,12 @@ const AppDrawer = ({ handleDrawerClose, open }) => {
   const theme = useTheme()
 
   const handleGoToPage = (page) => {
-    //no abrir page mas de una vez
-    if (pathname.search(page) !== 1) {
-      if (page === 'home') history.push('/home')
-      else history.push(page)
-    }
+    if (page === 'liquidacion' || page === 'home' || page === 'servicios')
+      if (pathname.search(page) !== 1) {
+        //no abrir page mas de una vez
+        if (page === 'home') history.push('/home')
+        else history.push(page)
+      }
   }
 
   return (

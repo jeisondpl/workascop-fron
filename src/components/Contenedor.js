@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(4),
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -44,7 +44,7 @@ export default function Contenedor(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Container maxWidth='md' className={classes.container}>
+        <Container maxWidth='xl' className={classes.container}>
           {props.children}
         </Container>
       </main>

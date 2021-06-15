@@ -54,7 +54,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   fixedHeight: {
-    height: 160,
+    height: '100%',
+  },
+  divider: {
+    marginTop: '20px',
+    // background:"white"
   },
 }))
 const Index = () => {
@@ -64,7 +68,7 @@ const Index = () => {
   const [total, setTotal] = useState('')
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
-
+  const fixedHeightPaper2 = clsx(classes.paper)
   //all values liquidacion
   const { data, loading, error } = useAllLiquidacion()
 
@@ -91,9 +95,11 @@ const Index = () => {
 
   return (
     <Contenedor>
-      <Title>Liquidacion</Title>
-      <Divider />
       <Grid container spacing={2}>
+        <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
+          <Title>Liquidacion</Title>
+          <Divider />
+        </Grid>
         {/* input */}
         <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
           <TextField
@@ -109,12 +115,15 @@ const Index = () => {
           <Button color='primary' type='submit' variant='outlined' onClick={hadleCalcular} style={{ marginTop: '10px', marginLeft: '15px' }}>
             Liquidar
           </Button>
+          <Divider className={classes.divider} />
         </Grid>
 
         {/* header */}
         <Grid className={classes.col} container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
           <Paper className={fixedHeightPaper}>
-            <Title>Datos Generales</Title>
+            <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
+              <Title>Datos Generales</Title>
+            </Grid>
             <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
               Identificacion
             </Typography>
@@ -126,56 +135,73 @@ const Index = () => {
             </Typography>
           </Paper>
         </Grid>
-      
-        {/* card */}
-        <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
-            <RecipeReviewCard servicio='Limpieza de Piscinas' codigociiu='8129' arl='IV' abc='L' />
-          </Grid>
-          <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
-            <RecipeReviewCard servicio='Instrumentos Musicales' codigociiu='9529' arl='II' abc='I' />
-          </Grid>
-          <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
-            <RecipeReviewCard servicio='Edición de videos' codigociiu='5912' arl='II' abc='E' />
-          </Grid>
-          <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
-            <RecipeReviewCard servicio='Entrenador Deportivo' codigociiu='8552' arl='I' abc='D' />
-          </Grid>
-        </Grid>
-        {/* col-6  */}
-        <Grid className={classes.col} container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Title>Datos base</Title>
 
-          {datos !== undefined ? (
-            <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
-              <Acordeon title='Ingreso base de liquidacion' name='panel1' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-                <Ibl loading={loading} data={data} />
-              </Acordeon>
-              <Acordeon title='Riesgos laborales' name='panel2' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-                <Arl loading={loading} data={data} />
-              </Acordeon>
-              <Acordeon title='Parafiscales' name='panel3' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-                <Parafiscales loading={loading} data={data} />
-              </Acordeon>
-              <Acordeon title='Prestaciones' name='panel4' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-                <Prestacion loading={loading} data={data} />
-              </Acordeon>
-              <Acordeon title='Piso seguridad social' name='panel5' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-                <PisoSeguridadSocial loading={loading} data={data} />
-              </Acordeon>
-              <Acordeon title='Retencion fuente' name='panel6' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-                <RetencionFuente loading={loading} data={data} />
-              </Acordeon>
-              <Acordeon title='Seguridad social' name='panel7' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-                <SeguridadSocials loading={loading} data={data} />
-              </Acordeon>
-              <Acordeon title='Recargo' name='panel8' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
-                <Recargos loading={loading} data={data} />
-              </Acordeon>
-            </Grid>
-          ) : (
-            <p>Sin conexion al servidor</p>
-          )}
+        <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
+        
+        
+          {/* col-8 */}
+          <Grid spacing={1} xs={8} sm={8} md={8} lg={8} xl={8} className={classes.col}>
+            <Paper className={fixedHeightPaper}>
+              <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
+                <Title>Resumen de servicios</Title>
+              </Grid>
+              {/* card */}
+              <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
+                <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
+                  <RecipeReviewCard servicio='Limpieza de Piscinas' codigociiu='8129' arl='IV' abc='L' />
+                </Grid>
+                <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
+                  <RecipeReviewCard servicio='Instrumentos Musicales' codigociiu='9529' arl='II' abc='I' />
+                </Grid>
+                <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
+                  <RecipeReviewCard servicio='Edición de videos' codigociiu='5912' arl='II' abc='E' />
+                </Grid>
+                <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6} className={classes.col}>
+                  <RecipeReviewCard servicio='Entrenador Deportivo' codigociiu='8552' arl='I' abc='D' />
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+
+          {/* col-4 */}
+          <Grid  spacing={1} xs={4} sm={4} md={4} lg={4} xl={4} className={classes.col}>
+            {datos !== undefined ? (
+              <Paper className={fixedHeightPaper2}>
+                  <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Title>Porcentajes base</Title>
+                  </Grid>
+                  <Grid container spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
+                    <Acordeon title='Ingreso base de liquidacion' name='panel1' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                      <Ibl loading={loading} data={data} />
+                    </Acordeon>
+                    <Acordeon title='Riesgos laborales' name='panel2' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                      <Arl loading={loading} data={data} />
+                    </Acordeon>
+                    <Acordeon title='Parafiscales' name='panel3' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                      <Parafiscales loading={loading} data={data} />
+                    </Acordeon>
+                    <Acordeon title='Prestaciones' name='panel4' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                      <Prestacion loading={loading} data={data} />
+                    </Acordeon>
+                    <Acordeon title='Piso seguridad social' name='panel5' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                      <PisoSeguridadSocial loading={loading} data={data} />
+                    </Acordeon>
+                    <Acordeon title='Retencion fuente' name='panel6' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                      <RetencionFuente loading={loading} data={data} />
+                    </Acordeon>
+                    <Acordeon title='Seguridad social' name='panel7' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                      <SeguridadSocials loading={loading} data={data} />
+                    </Acordeon>
+                    <Acordeon title='Recargo' name='panel8' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
+                      <Recargos loading={loading} data={data} />
+                    </Acordeon>
+                </Grid>
+              </Paper>
+            ) : (
+              <p>Sin conexion al servidor</p>
+            )}
+            {/* </Grid> */}
+          </Grid>
         </Grid>
       </Grid>
     </Contenedor>

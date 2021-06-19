@@ -3,7 +3,7 @@ import { createStyles, TableContainer, Table, TableRow, TableBody, TableCell, Gr
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import { red } from '@material-ui/core/colors'
-import MuiTableHead from "@material-ui/core/TableHead";
+import MuiTableHead from '@material-ui/core/TableHead'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -55,19 +55,19 @@ const StyledTableRow = withStyles((theme: Theme) =>
   })
 )(TableRow)
 
-const TableHead = withStyles(theme => ({
-    root: {
-      backgroundColor: '#757575'
-    }
-  }))(MuiTableHead);
-  
-  const TableHeaderCell = withStyles(theme => ({
-    root: {
-      color: 'white'
-    }
-  }))(TableCell);
-  
-const DatosGenerales = ({ calificacion }) => {
+const TableHead = withStyles((theme) => ({
+  root: {
+    backgroundColor: '#757575',
+  },
+}))(MuiTableHead)
+
+const TableHeaderCell = withStyles((theme) => ({
+  root: {
+    color: 'white',
+  },
+}))(TableCell)
+
+const DatosGenerales = ({ data }) => {
   const classes = useStyles()
   return (
     <>
@@ -84,13 +84,13 @@ const DatosGenerales = ({ calificacion }) => {
               <StyledTableCell component='th' scope='row'>
                 Identificacion
               </StyledTableCell>
-              <StyledTableCell align='right'>{calificacion && calificacion.solicitudAsignada.colaborador.identificacion}</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.solicitudAsignada.colaborador.identificacion}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 Nombre
               </StyledTableCell>
-              <StyledTableCell align='right'>{calificacion && calificacion.solicitudAsignada.colaborador.cliente.nombre}</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.solicitudAsignada.colaborador.cliente.nombre}</StyledTableCell>
             </StyledTableRow>
           </TableBody>
         </Table>
@@ -109,31 +109,31 @@ const DatosGenerales = ({ calificacion }) => {
               <StyledTableCell component='th' scope='row'>
                 Total servicios
               </StyledTableCell>
-              <StyledTableCell align='right'>{calificacion && calificacion.solicitudAsignada.valor}</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.solicitudAsignada.valor}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 Aporte obligatorio a salud EPS
               </StyledTableCell>
-              <StyledTableCell align='right'>$15.000</StyledTableCell>
+              <StyledTableCell align='right'>$</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 Aporte obligatorio a pensión AFP
               </StyledTableCell>
-              <StyledTableCell align='right'>$12.000</StyledTableCell>
+              <StyledTableCell align='right'>$</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 Riesgo ARL
               </StyledTableCell>
-              <StyledTableCell align='right'>$13.000</StyledTableCell>
+              <StyledTableCell align='right'>$</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 <Box fontWeight='fontWeightBold'>SUBTOTAL</Box>
               </StyledTableCell>
-              <StyledTableCell align='right'>260.000</StyledTableCell>
+              <StyledTableCell align='right'>$</StyledTableCell>
             </StyledTableRow>
             {/* <StyledTableRow>
           <StyledTableCell component='th' scope='row'>
@@ -150,7 +150,7 @@ const DatosGenerales = ({ calificacion }) => {
               </StyledTableCell>
               <StyledTableCell align='right'>
                 {' '}
-                <Box fontWeight='fontWeightBold'>$260.000</Box>
+                <Box fontWeight='fontWeightBold'>${data && data.solicitudAsignada.valor}</Box>
               </StyledTableCell>
             </StyledTableRow>
           </TableBody>

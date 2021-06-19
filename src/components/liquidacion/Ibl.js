@@ -26,13 +26,13 @@ const Ibl = ({ loading, data }) => {
                     <Cards titulo='UVT' valor={item.uvt} isporc={false} fecha={item.fecha} />
                   </Grid>
                   <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6}>
-                    <Cards titulo='SMMLV' valor={item.smmlv} isporc={true} fecha={item.fecha} />
+                    <Cards titulo='SMMLV' valor={item.smmlv} isporc={false} fecha={item.fecha} />
                   </Grid>
                   <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6}>
-                    <Cards titulo='SMMLV hora' valor={item.smmlvHora} isporc={true} fecha={item.fecha} />
+                    <Cards titulo='SMMLV hora' valor={item.smmlvHora} isporc={false} fecha={item.fecha} />
                   </Grid>
                   <Grid spacing={1} xs={12} sm={6} md={6} lg={6} xl={6}>
-                    <Cards titulo='Aux. transporte' valor={item.auxTransporte} isporc={true} fecha={item.fecha} />
+                    <Cards titulo='Aux. transporte' valor={item.auxTransporte} isporc={false} fecha={item.fecha} />
                   </Grid>
                 </>
               ))

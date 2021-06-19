@@ -27,9 +27,23 @@ const Servicios = () => {
   const [datos, setDatos] = useState([])
   const [servicio, setServicio] = useState(null)
 
+
+
+
   //all servicios
   const { data, loading, error } = useServicio()
 
+
+
+
+
+
+
+
+
+
+
+  
   //get id serevicio
   const [getServicios, result] = useFindServicio()
 

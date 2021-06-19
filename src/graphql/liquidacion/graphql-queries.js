@@ -169,3 +169,25 @@ export const ALL_BASE_LIQUIDACION = gql`
     }
   }
 `
+export const FIND_CALIFICACION = gql`
+  query findCalificaciones($Idcolaborador: String!) {
+    findCalificaciones(Idcolaborador: $Idcolaborador) {
+      id
+      solicitudAsignada {
+        colaborador {
+          identificacion
+          cliente {
+            nombre
+          }
+        }
+        valor
+        solicitud {
+          subservicio {
+            nombre
+            claseRiesgo
+          }
+        }
+      }
+    }
+  }
+`

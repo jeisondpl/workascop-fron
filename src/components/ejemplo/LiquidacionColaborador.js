@@ -17,8 +17,8 @@ import ShareIcon from '@material-ui/icons/Share'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Paper from '@material-ui/core/Paper'
-import Title from '../../components/ejemplo/Title'
-import Acordeon from '../../components/liquidacion/Acordeon'
+import Title from './Title'
+import Acordeon from '../liquidacion/Acordeon'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 )
+
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     head: {
@@ -65,7 +66,9 @@ const StyledTableRow = withStyles((theme: Theme) =>
     },
   })
 )(TableRow)
-export default function RecipeReviewCard({ servicio, codigociiu, arl, abc }) {
+
+
+export default function LiquidacionCliente({ servicio, codigociiu, arl, abc }) {
   const classes = useStyles()
   const [expanded, setExpanded] = useState(false)
 
@@ -85,12 +88,12 @@ export default function RecipeReviewCard({ servicio, codigociiu, arl, abc }) {
             {abc}
           </Avatar>
         }
-        action={
-          <IconButton aria-label='settings'>
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={servicio}
+        // action={
+        //   <IconButton aria-label='settings'>
+        //     <MoreVertIcon />
+        //   </IconButton>
+        // }
+        // title={servicio}
         subheader={str_date}
       />
 
@@ -100,7 +103,6 @@ export default function RecipeReviewCard({ servicio, codigociiu, arl, abc }) {
             <TableHead>
               <TableRow>
                 <StyledTableCell>Concepto</StyledTableCell>
-                <StyledTableCell align='right'>%</StyledTableCell>
                 <StyledTableCell align='right'>Valor</StyledTableCell>
               </TableRow>
             </TableHead>
@@ -109,7 +111,6 @@ export default function RecipeReviewCard({ servicio, codigociiu, arl, abc }) {
                 <StyledTableCell component='th' scope='row'>
                   Valor servicio
                 </StyledTableCell>
-                <StyledTableCell align='right'></StyledTableCell>
                 <StyledTableCell align='right'>$ 20.000</StyledTableCell>
               </StyledTableRow>
               <StyledTableRow>
@@ -117,106 +118,57 @@ export default function RecipeReviewCard({ servicio, codigociiu, arl, abc }) {
                   <Box fontWeight='fontWeightBold'>Seguridad Social</Box>
                 </StyledTableCell>
                 <StyledTableCell align='right'></StyledTableCell>
-                <StyledTableCell align='right'></StyledTableCell>
               </StyledTableRow>
               <StyledTableRow>
                 <StyledTableCell component='th' scope='row'>
                   Aporte obligatorio a salud EPS
                 </StyledTableCell>
-                <StyledTableCell align='right'>4</StyledTableCell>
                 <StyledTableCell align='right'>140.000</StyledTableCell>
               </StyledTableRow>
               <StyledTableRow>
                 <StyledTableCell component='th' scope='row'>
                   Aporte obligatorio a pensión AFP
                 </StyledTableCell>
-                <StyledTableCell align='right'>4</StyledTableCell>
                 <StyledTableCell align='right'>$120.000</StyledTableCell>
               </StyledTableRow>
               <StyledTableRow>
                 <StyledTableCell component='th' scope='row'>
                   Riesgo ARL
                 </StyledTableCell>
-                <StyledTableCell align='right'>4</StyledTableCell>
-                <StyledTableCell align='right'>$120.000</StyledTableCell>
-              </StyledTableRow>
-              <StyledTableRow>
-                <StyledTableCell component='th' scope='row'>
-                  <Box fontWeight='fontWeightBold'>Parafiscales</Box>
-                </StyledTableCell>
-                <StyledTableCell align='right'></StyledTableCell>
-                <StyledTableCell align='right'></StyledTableCell>
-              </StyledTableRow>
-              <StyledTableRow>
-                <StyledTableCell component='th' scope='row'>
-                  Caja de compensación familiar
-                </StyledTableCell>
-                <StyledTableCell align='right'>4</StyledTableCell>
-                <StyledTableCell align='right'>$120.000</StyledTableCell>
-              </StyledTableRow>
-              <StyledTableRow>
-                <StyledTableCell component='th' scope='row'>
-                  SENA
-                </StyledTableCell>
-                <StyledTableCell align='right'>4</StyledTableCell>
-                <StyledTableCell align='right'>$120.000</StyledTableCell>
-              </StyledTableRow>
-              <StyledTableRow>
-                <StyledTableCell component='th' scope='row'>
-                  ICBF
-                </StyledTableCell>
-                <StyledTableCell align='right'>4</StyledTableCell>
-                <StyledTableCell align='right'>$120.000</StyledTableCell>
-              </StyledTableRow>
-              <StyledTableRow>
-                <StyledTableCell component='th' scope='row'>
-                  <Box fontWeight='fontWeightBold'>Parafiscales</Box>
-                </StyledTableCell>
-                <StyledTableCell align='right'></StyledTableCell>
-                <StyledTableCell align='right'></StyledTableCell>
-              </StyledTableRow>
-              <StyledTableRow>
-                <StyledTableCell component='th' scope='row'>
-                  Retención en la fuente
-                </StyledTableCell>
-                <StyledTableCell align='right'>4</StyledTableCell>
                 <StyledTableCell align='right'>$120.000</StyledTableCell>
               </StyledTableRow>
               <StyledTableRow>
                 <StyledTableCell component='th' scope='row'>
                   <Box fontWeight='fontWeightBold'>SUBTOTAL</Box>
                 </StyledTableCell>
-                <StyledTableCell align='right'></StyledTableCell>
                 <StyledTableCell align='right'>325.000</StyledTableCell>
               </StyledTableRow>
-              <StyledTableRow>
+              {/* <StyledTableRow>
                 <StyledTableCell component='th' scope='row'>
                   Servicio WORKAScop
                 </StyledTableCell>
                 <StyledTableCell align='right'>4</StyledTableCell>
                 <StyledTableCell align='right'>$120.000</StyledTableCell>
-              </StyledTableRow>
+              </StyledTableRow> */}
               <StyledTableRow>
                 <StyledTableCell component='th' scope='row'>
                   <Box textAlign='right' fontWeight='fontWeightBold'>
                     TOTAL
                   </Box>
                 </StyledTableCell>
-                <StyledTableCell align='right'></StyledTableCell>
                 <StyledTableCell align='right'>325.000</StyledTableCell>
               </StyledTableRow>
             </TableBody>
           </Table>
         </TableContainer>
       </CardContent>
-      <CardActions disableSpacing>
-        {/* <IconButton aria-label='add to favorites'>
+      {/* <CardActions disableSpacing>
+        <IconButton aria-label='add to favorites'>
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label='share'>
           <ShareIcon />
-        </IconButton> */}
-        {/* <Title>Datos Generales</Title> */}
+        </IconButton>
         <Typography className={classes.fecha} color='textSecondary'>
           Detalle
         </Typography>
@@ -230,8 +182,9 @@ export default function RecipeReviewCard({ servicio, codigociiu, arl, abc }) {
         >
           <ExpandMoreIcon />
         </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout='auto' unmountOnExit>
+      </CardActions> */}
+
+      {/* <Collapse in={expanded} timeout='auto' unmountOnExit>
         <CardContent>
           <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
             <Acordeon title='Servicio 1' name='panel1' handleChangeAcordeon={handleChangeAcordeon} expanded={expandedacor}>
@@ -251,7 +204,10 @@ export default function RecipeReviewCard({ servicio, codigociiu, arl, abc }) {
             </Acordeon>
           </Grid>
         </CardContent>
-      </Collapse>
+      </Collapse> */}
+
     </Card>
   )
 }
+
+

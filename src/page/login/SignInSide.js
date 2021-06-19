@@ -86,7 +86,7 @@ export default function SignInSide() {
           <Image aspectRatio={0} disableSpinner={true} style={styleImage} className='img_logo' cover={true} color src={logo} />
           {/* </Avatar> */}
           <Typography component='h1' variant='h5'>
-            Iniciar sesion WorkasCop
+            Iniciar sesión
           </Typography>
           <form className={classes.form} noValidate>
             <TextField variant='outlined' margin='normal' required fullWidth id='email' label='Correo electronico' name='email' autoComplete='email' autoFocus />

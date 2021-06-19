@@ -145,17 +145,8 @@ const Index = () => {
               <Title>Resumen total</Title>
             </Grid>
             <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
-              <DatosGenerales />
-              {/* <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Identificacion : {calificacion && calificacion.solicitudAsignada.colaborador.identificacion}
-                </Typography>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Nombre colaborador : {calificacion && calificacion.solicitudAsignada.colaborador.cliente.nombre}
-                </Typography>
-                <Typography component='h4' variant='body1' color='textPrimary' gutterBottom>
-                  Valor total
-                  <Box fontWeight='fontWeightBold'> {calificacion && calificacion.solicitudAsignada.valor}</Box>
-                </Typography> */}
+              <DatosGenerales data = {calificacion} />
+              
             </Grid>
           </Paper>
         </Grid>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStyles, TableContainer, Table, TableHead, TableRow, TableBody, TableCell, Grid, Box } from '@material-ui/core'
+import { createStyles, TableContainer, Table, TableHead, TableRow, TableBody, TableCell, Grid, Box,Divider } from '@material-ui/core'
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import { red } from '@material-ui/core/colors'
@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       backgroundColor: red[500],
     },
+    divider:{
+        marginTop:'20px'
+    }
   })
 )
 
@@ -54,8 +57,9 @@ const StyledTableRow = withStyles((theme: Theme) =>
 const DatosGenerales = () => {
   const classes = useStyles()
   return (
+      <>
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label='customized table'>
+      <Table className={classes.table} aria-label='customized table' size="small" aria-label="a dense table">
         <TableHead>
           {/* <TableRow>
             <StyledTableCell>Concepto</StyledTableCell>
@@ -81,60 +85,78 @@ const DatosGenerales = () => {
             </StyledTableCell>
             <StyledTableCell align='right'>Jeison diaz</StyledTableCell>
           </StyledTableRow>
-          <StyledTableRow>
-            <StyledTableCell component='th' scope='row'>
-              <Box fontWeight='fontWeightBold'>LIQUIDACION TOTAL</Box>
-            </StyledTableCell>
-            <StyledTableCell align='right'></StyledTableCell>
-          </StyledTableRow>
-          <StyledTableRow>
-            <StyledTableCell component='th' scope='row'>
-              Total servicios
-            </StyledTableCell>
-            <StyledTableCell align='right'>$300.000</StyledTableCell>
-          </StyledTableRow>
-          <StyledTableRow>
-            <StyledTableCell component='th' scope='row'>
-              Aporte obligatorio a salud EPS
-            </StyledTableCell>
-            <StyledTableCell align='right'>$15.000</StyledTableCell>
-          </StyledTableRow>
-          <StyledTableRow>
-            <StyledTableCell component='th' scope='row'>
-              Aporte obligatorio a pensión AFP
-            </StyledTableCell>
-            <StyledTableCell align='right'>$12.000</StyledTableCell>
-          </StyledTableRow>
-          <StyledTableRow>
-            <StyledTableCell component='th' scope='row'>
-              Riesgo ARL
-            </StyledTableCell>
-            <StyledTableCell align='right'>$13.000</StyledTableCell>
-          </StyledTableRow>
-          <StyledTableRow>
-            <StyledTableCell component='th' scope='row'>
-              <Box fontWeight='fontWeightBold'>SUBTOTAL</Box>
-            </StyledTableCell>
-            <StyledTableCell align='right'>260.000</StyledTableCell>
-          </StyledTableRow>
-          {/* <StyledTableRow>
-              <StyledTableCell component='th' scope='row'>
-                Servicio WORKAScop
-              </StyledTableCell>
-              <StyledTableCell align='right'>4</StyledTableCell>
-              <StyledTableCell align='right'>$120.000</StyledTableCell>
-            </StyledTableRow> */}
-          <StyledTableRow>
-            <StyledTableCell component='th' scope='row'>
-              <Box textAlign='right' fontWeight='fontWeightBold'>
-                TOTAL
-              </Box>
-            </StyledTableCell>
-            <StyledTableCell align='right'> <Box fontWeight='fontWeightBold'>$260.000</Box></StyledTableCell>
-          </StyledTableRow>
+          
         </TableBody>
       </Table>
     </TableContainer>
+  <Divider className={classes.divider}/>
+  <TableContainer component={Paper}>
+  <Table className={classes.table} aria-label='customized table' size="small" >
+    <TableHead>
+      {/* <TableRow>
+        <StyledTableCell>Concepto</StyledTableCell>
+        <StyledTableCell align='right'>Valor</StyledTableCell>
+      </TableRow> */}
+    </TableHead>
+    <TableBody>
+    
+      <StyledTableRow>
+        <StyledTableCell component='th' scope='row'>
+          <Box fontWeight='fontWeightBold'>LIQUIDACION TOTAL</Box>
+        </StyledTableCell>
+        <StyledTableCell align='right'></StyledTableCell>
+      </StyledTableRow>
+      <StyledTableRow>
+        <StyledTableCell component='th' scope='row'>
+          Total servicios
+        </StyledTableCell>
+        <StyledTableCell align='right'>$300.000</StyledTableCell>
+      </StyledTableRow>
+      <StyledTableRow>
+        <StyledTableCell component='th' scope='row'>
+          Aporte obligatorio a salud EPS
+        </StyledTableCell>
+        <StyledTableCell align='right'>$15.000</StyledTableCell>
+      </StyledTableRow>
+      <StyledTableRow>
+        <StyledTableCell component='th' scope='row'>
+          Aporte obligatorio a pensión AFP
+        </StyledTableCell>
+        <StyledTableCell align='right'>$12.000</StyledTableCell>
+      </StyledTableRow>
+      <StyledTableRow>
+        <StyledTableCell component='th' scope='row'>
+          Riesgo ARL
+        </StyledTableCell>
+        <StyledTableCell align='right'>$13.000</StyledTableCell>
+      </StyledTableRow>
+      <StyledTableRow>
+        <StyledTableCell component='th' scope='row'>
+          <Box fontWeight='fontWeightBold'>SUBTOTAL</Box>
+        </StyledTableCell>
+        <StyledTableCell align='right'>260.000</StyledTableCell>
+      </StyledTableRow>
+      {/* <StyledTableRow>
+          <StyledTableCell component='th' scope='row'>
+            Servicio WORKAScop
+          </StyledTableCell>
+          <StyledTableCell align='right'>4</StyledTableCell>
+          <StyledTableCell align='right'>$120.000</StyledTableCell>
+        </StyledTableRow> */}
+      <StyledTableRow>
+        <StyledTableCell component='th' scope='row'>
+          <Box textAlign='right' fontWeight='fontWeightBold'>
+            TOTAL
+          </Box>
+        </StyledTableCell>
+        <StyledTableCell align='right'> <Box fontWeight='fontWeightBold'>$260.000</Box></StyledTableCell>
+      </StyledTableRow>
+    </TableBody>
+  </Table>
+</TableContainer>
+
+</>
+  
   )
 }
 

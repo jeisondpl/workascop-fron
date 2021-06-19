@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createStyles, TableContainer, Table, TableHead, TableRow, TableBody, TableCell, Grid, Box } from '@material-ui/core'
+import { createStyles, TableContainer, Table, TableRow, TableBody, TableCell, Grid, Box } from '@material-ui/core'
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import Card from '@material-ui/core/Card'
@@ -19,6 +19,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Paper from '@material-ui/core/Paper'
 import Title from './Title'
 import Acordeon from '../liquidacion/Acordeon'
+import MuiTableHead from "@material-ui/core/TableHead";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -67,6 +68,19 @@ const StyledTableRow = withStyles((theme: Theme) =>
   })
 )(TableRow)
 
+const TableHead = withStyles(theme => ({
+  root: {
+    backgroundColor: '#757575'
+  }
+}))(MuiTableHead);
+
+const TableHeaderCell = withStyles(theme => ({
+  root: {
+    color: 'white'
+  }
+}))(TableCell);
+
+
 
 export default function LiquidacionCliente({ servicio, codigociiu, arl, abc }) {
   const classes = useStyles()
@@ -81,7 +95,7 @@ export default function LiquidacionCliente({ servicio, codigociiu, arl, abc }) {
   }
   const str_date = `ARL: ${arl} -  CIIU: ${codigociiu} `
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} elevation="0">
       <CardHeader
         avatar={
           <Avatar aria-label='recipe' className={classes.avatar}>
@@ -99,11 +113,11 @@ export default function LiquidacionCliente({ servicio, codigociiu, arl, abc }) {
 
       <CardContent>
         <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label='customized table'>
+          <Table className={classes.table} aria-label='customized table' size="small">
             <TableHead>
               <TableRow>
-                <StyledTableCell>Concepto</StyledTableCell>
-                <StyledTableCell align='right'>Valor</StyledTableCell>
+                <TableHeaderCell>Conceptos</TableHeaderCell>
+                <TableHeaderCell align='right'>Valor</TableHeaderCell>
               </TableRow>
             </TableHead>
             <TableBody>

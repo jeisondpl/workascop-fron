@@ -22,7 +22,7 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn'
 const useStyles = makeStyles(() => ({
   oppositeContent: {
     // TODO: adjust this value accordingly
-    flex: 0.1,
+    flex: 0.2,
   },
   text: {
     fontSize: '14px',
@@ -35,85 +35,85 @@ const useStyles = makeStyles(() => ({
 export default function BasicTimeline() {
   const classes = useStyles()
   return (
-   
-        <Timeline align='left'>
-          <TimelineItem>
-            <TimelineOppositeContent className={classes.oppositeContent} color='textSecondary'>
-              <Typography className={classes.text}>$150.000</Typography>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot color='primary'>
-                <DoneAllIcon />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Accordion>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
-                  <Typography className={classes.heading}>Limpieza de Piscinas</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <LiquidacionColaborador servicio='Limpieza de piscinas' codigociiu='8129' arl='IV' abc='L' />
-                </AccordionDetails>
-              </Accordion>
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineOppositeContent className={classes.oppositeContent} color='textSecondary'>
-              <Typography className={classes.text}>$120.000</Typography>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot color='primary'>
-                <DoneAllIcon />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Accordion>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
-                  <Typography className={classes.heading}>Corete de cabello</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <LiquidacionCliente servicio='Corete de cabello' codigociiu='8129' arl='IV' abc='L' />
-                </AccordionDetails>
-              </Accordion>
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineOppositeContent className={classes.oppositeContent} color='textSecondary'>
-              <Typography className={classes.text}>$30.000</Typography>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot color='primary'>
-                <DoneAllIcon />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Accordion>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
-                  <Typography className={classes.heading}>Limpieza de Piscinas</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <LiquidacionColaborador servicio='Limpieza de piscinas' codigociiu='8129' arl='IV' abc='L' />
-                </AccordionDetails>
-              </Accordion>
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineOppositeContent className={classes.oppositeContent} color='textSecondary'>
-            <Typography className={classes.text}>TOTAL</Typography>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot color='Secondary'>
-                <MonetizationOnIcon />
-              </TimelineDot>
-            </TimelineSeparator>
-            <TimelineContent>
-            <Typography style={{paddingTop:"4px"}} variant="h6" >300.000</Typography>
-            </TimelineContent>
-          </TimelineItem>
-        </Timeline>
-    
+    <Timeline align='left'>
+      <TimelineItem>
+        <TimelineOppositeContent className={classes.oppositeContent} color='textSecondary'>
+          <Typography className={classes.text}>$150.000</Typography>
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color='primary'>
+            <DoneAllIcon />
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent>
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+              <Typography className={classes.heading}>Limpieza de Piscinas</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <LiquidacionColaborador servicio='Limpieza de piscinas' codigociiu='8129' arl='IV' abc='L' />
+            </AccordionDetails>
+          </Accordion>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent className={classes.oppositeContent} color='textSecondary'>
+          <Typography className={classes.text}>$120.000</Typography>
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color='primary'>
+            <DoneAllIcon />
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent>
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+              <Typography className={classes.heading}>Corete de cabello</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <LiquidacionCliente servicio='Corete de cabello' codigociiu='8129' arl='IV' abc='L' />
+            </AccordionDetails>
+          </Accordion>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent className={classes.oppositeContent} color='textSecondary'>
+          <Typography className={classes.text}>$30.000</Typography>
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color='primary'>
+            <DoneAllIcon />
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent>
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+              <Typography className={classes.heading}>Tutoria Virtual</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <LiquidacionColaborador servicio='Tutoria virtual' codigociiu='8129' arl='IV' abc='L' />
+            </AccordionDetails>
+          </Accordion>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent className={classes.oppositeContent} color='textSecondary'>
+          <Typography className={classes.text}>TOTAL</Typography>
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color='Secondary'>
+            <MonetizationOnIcon />
+          </TimelineDot>
+        </TimelineSeparator>
+        <TimelineContent>
+          <Typography style={{ paddingTop: '4px' }} variant='h6'>
+            300.000
+          </Typography>
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
   )
 }

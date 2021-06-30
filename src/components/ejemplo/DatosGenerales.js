@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createStyles, TableContainer, Table, TableRow, TableBody, TableCell, Grid, Box, Divider } from '@material-ui/core'
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
@@ -72,7 +72,7 @@ const DatosGenerales = ({ data }) => {
   return (
     <>
       <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label='customized table' size='small' aria-label='a dense table'>
+        <Table className={classes.table} aria-label='customized table' size='small' >
           <TableHead>
             <TableRow>
               <TableHeaderCell>DATOS GENERALES</TableHeaderCell>
@@ -84,13 +84,13 @@ const DatosGenerales = ({ data }) => {
               <StyledTableCell component='th' scope='row'>
                 Identificacion
               </StyledTableCell>
-              <StyledTableCell align='right'>{data && data.solicitudAsignada.colaborador.identificacion}</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.findColaboradorSmall[0].identificacion}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 Nombre
               </StyledTableCell>
-              <StyledTableCell align='right'>{data && data.solicitudAsignada.colaborador.cliente.nombre}</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.findColaboradorSmall[0].nombre}</StyledTableCell>
             </StyledTableRow>
           </TableBody>
         </Table>
@@ -109,31 +109,31 @@ const DatosGenerales = ({ data }) => {
               <StyledTableCell component='th' scope='row'>
                 Total servicios
               </StyledTableCell>
-              <StyledTableCell align='right'>{data && data.solicitudAsignada.valor}</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.findColaboradorSmall[0].totalServicios}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 Aporte obligatorio a salud EPS
               </StyledTableCell>
-              <StyledTableCell align='right'>$</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.findColaboradorSmall[0].totalSalud}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 Aporte obligatorio a pensión AFP
               </StyledTableCell>
-              <StyledTableCell align='right'>$</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.findColaboradorSmall[0].totalpension}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 Riesgo ARL
               </StyledTableCell>
-              <StyledTableCell align='right'>$</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.findColaboradorSmall[0].totalArl}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component='th' scope='row'>
                 <Box fontWeight='fontWeightBold'>SUBTOTAL</Box>
               </StyledTableCell>
-              <StyledTableCell align='right'>$</StyledTableCell>
+              <StyledTableCell align='right'>{data && data.findColaboradorSmall[0].subTotal}</StyledTableCell>
             </StyledTableRow>
             {/* <StyledTableRow>
           <StyledTableCell component='th' scope='row'>
@@ -150,7 +150,7 @@ const DatosGenerales = ({ data }) => {
               </StyledTableCell>
               <StyledTableCell align='right'>
                 {' '}
-                <Box fontWeight='fontWeightBold'>${data && data.solicitudAsignada.valor}</Box>
+                <Box fontWeight='fontWeightBold'>${data && data.findColaboradorSmall[0].subTotal}</Box>
               </StyledTableCell>
             </StyledTableRow>
           </TableBody>

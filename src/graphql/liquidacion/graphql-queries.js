@@ -191,3 +191,30 @@ export const FIND_CALIFICACION = gql`
     }
   }
 `
+export const FIND_LIQUIDACION = gql`
+  query findLiquidacion($Idcolaborador: String!) {
+    findColaboradorSmall(Idcolaborador: $Idcolaborador) {
+      identificacion
+      nombre
+      totalSalud
+      totalpension
+      totalArl
+      subTotal
+      totalServicios
+    }
+    liquidacion(Idcolaborador: $Idcolaborador) {
+      num
+      total
+      niveRiesgo
+      porcRiesgo
+      calculoRiesgo
+      calculoRiesgo
+      porcSalud
+      calculoSalud
+      porcPension
+      calculoPension
+      subTotal
+      servicio
+    }
+  }
+`

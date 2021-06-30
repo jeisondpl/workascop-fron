@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
-import { makeStyles, Divider, Grid, Box, FormControl, InputLabel, Typography, Paper, Input, FormHelperText, Button, TextField } from '@material-ui/core'
+import { makeStyles, Divider, Grid, Paper, Button, TextField } from '@material-ui/core'
 import Contenedor from '../../components/Contenedor'
 import Title from '../../components/ejemplo/Title'
-import FormSearchUser from '../../components/form/FormSearchUser'
 import { useAllLiquidacion } from '../../graphql/liquidacion/Custom-hooks'
 import Arl from '../../components/liquidacion/Arl'
 import Ibl from '../../components/liquidacion/Ibl'
@@ -13,19 +12,19 @@ import PisoSeguridadSocial from '../../components/liquidacion/PisoSeguridadSocia
 import RetencionFuente from '../../components/liquidacion/RetencionFuente'
 import SeguridadSocials from '../../components/liquidacion/SeguridadSocials'
 import Acordeon from '../../components/liquidacion/Acordeon'
-import Papers from '../../components/Papers'
-import { CalculoLiquidacion } from '../../components/liquidacion/CalculoLiquidacion'
 import Recargos from '../../components/liquidacion/Recargos'
-import RecipeReviewCard from '../../components/ejemplo/LiquidacionCliente'
-import { useFindCalificacion } from '../../graphql/liquidacion/Custom-hooks'
-import VerticalLinearStepper from '../../components/ejemplo/VerticalLinearStepper'
 import BasicTimeline from '../../components/ejemplo/BasicTimeline'
 import DatosGenerales from '../../components/ejemplo/DatosGenerales'
+import { useFindLiquidacion } from '../../graphql/liquidacion/Custom-hooks'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
+  },
+  message: {
+    color: 'red',
+    marginInlineStart: '10px',
   },
   separador: {
     marginTop: '30px',
@@ -65,34 +64,43 @@ const useStyles = makeStyles((theme) => ({
     // background:"white"
   },
 }))
+
 const Index = () => {
   const classes = useStyles()
-  const [datos, setDatos] = useState([])
   const [expanded, setExpanded] = useState(false)
   const [identificacion, setIdentificacion] = useState('')
-  const [calificacion, setCalificacion] = useState(undefined)
-
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   const fixedHeightPaper2 = clsx(classes.paper)
-  //all values liquidacion
-  const { data, loading, error } = useAllLiquidacion()
+  const [liquidacion, setLiquidacion] = useState(null)
+  const [message, setMessage] = useState('')
 
-  //get id calificacion con cc del colaborador
-  const [getCalificacion, result] = useFindCalificacion()
-
-  //buscar calificaion por colaborador
+  //get liquidacion
+  const [getLiquidacion, result] = useFindLiquidacion()
   useEffect(() => {
     if (result.data) {
-      setCalificacion(result.data.findCalificaciones[0])
+      if (result.data.liquidacion.length > 0 && result.data.findColaboradorSmall.length > 0) {
+        setLiquidacion(result.data)
+      } else {
+        setMessage('No se encuentra registrada esta identificacion')
+        setLiquidacion(undefined)
+        setTimeout(function () {
+          setMessage('')
+        }, 1500)
+      }
     }
   }, [result])
 
-  //recibe lista de valores de liquidacion
-  useEffect(() => {
-    if (data !== undefined) {
-      setDatos(data)
-    }
-  }, [data])
+  //porcentajes liquidacion
+  const { data, loading, error } = useAllLiquidacion()
+
+  const hadleOnLiqidar = () => {
+    if (identificacion) getLiquidacion({ variables: { Idcolaborador: identificacion } })
+  }
+
+  const hadleOnChange = (evt) => {
+    setIdentificacion(evt.target.value)
+    if (liquidacion) setLiquidacion(undefined)
+  }
 
   const handleChangeAcordeon = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false)
@@ -102,74 +110,64 @@ const Index = () => {
     console.log('Error ', error)
   }
 
-  // -------------------------------------------
-  const hadleCalcular = () => {
-    getCalificacion({ variables: { Idcolaborador: identificacion } })
-    //console.log(result)
-    //const { acumulado, valor_hora } = CalculoLiquidacion({ total: total, data: datos })
-    //console.log(acumulado)
-  }
-
   return (
     <Contenedor>
       <Grid container spacing={2}>
         <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
           <Title>Liquidacion</Title>
           <Divider />
-
-          {/* <VerticalLinearStepper /> */}
         </Grid>
         {/* input */}
+        <label className={classes.message}>{message}</label>
         <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
           <TextField
             id='standard-number'
-            label='Cedula'
+            label='Cedula colaborador'
             type='number'
             InputLabelProps={{
               shrink: true,
             }}
             value={identificacion}
-            onChange={(evt) => setIdentificacion(evt.target.value)}
+            onChange={(evt) => hadleOnChange(evt)}
           />
-          <Button color='primary' type='submit' variant='outlined' onClick={hadleCalcular} style={{ marginTop: '10px', marginLeft: '15px' }}>
+
+          <Button color='primary' type='submit' variant='outlined' onClick={hadleOnLiqidar} style={{ marginTop: '10px', marginLeft: '15px' }}>
             Liquidar
           </Button>
           <Divider className={classes.divider} />
         </Grid>
 
- 
-        {/* col-3 */}
+        {/* col-3 Resumen total<*/}
         <Grid container spacing={1} xs={12} sm={12} md={3} lg={3} xl={3} className={classes.col}>
           <Paper className={fixedHeightPaper}>
             <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
               <Title>Resumen total</Title>
             </Grid>
             <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
-              <DatosGenerales data = {calificacion} />
-              
+              {liquidacion !== undefined && liquidacion ? <DatosGenerales data={liquidacion} /> : []}
             </Grid>
           </Paper>
         </Grid>
 
-        {/* col-5 */}
+        {/* col-5 Resumen de servicios*/}
         <Grid container spacing={1} xs={12} sm={12} md={5} lg={5} xl={5} className={classes.col}>
           <Paper className={fixedHeightPaper}>
             <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
               <Title>Resumen de servicios</Title>
             </Grid>
             <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
-              <BasicTimeline />
+              {liquidacion !== undefined && liquidacion ? <BasicTimeline data={liquidacion} /> : []}
             </Grid>
           </Paper>
         </Grid>
 
-        {/* col-4 */}
+        {/* col-4 Porcentajes base*/}
         <Grid container spacing={1} xs={12} sm={12} md={4} lg={4} xl={4} className={classes.col}>
-          {datos !== undefined ? (
-            <Paper className={fixedHeightPaper2}>
-              <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
-                <Title>Porcentajes base</Title>
-              </Grid>
+          <Paper className={fixedHeightPaper2}>
+            <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12}>
+              <Title>Porcentajes base</Title>
+            </Grid>
+            {data !== undefined && liquidacion !== undefined && liquidacion ? (
               <Grid spacing={1} xs={12} sm={12} md={12} lg={12} xl={12} className={classes.col}>
                 <Acordeon title='Ingreso base de liquidacion' name='panel1' handleChangeAcordeon={handleChangeAcordeon} expanded={expanded}>
                   <Ibl loading={loading} data={data} />
@@ -196,11 +194,10 @@ const Index = () => {
                   <Recargos loading={loading} data={data} />
                 </Acordeon>
               </Grid>
-            </Paper>
-          ) : (
-            <p>Sin conexion al servidor</p>
-          )}
-          {/* </Grid> */}
+            ) : (
+              []
+            )}
+          </Paper>
         </Grid>
       </Grid>
     </Contenedor>

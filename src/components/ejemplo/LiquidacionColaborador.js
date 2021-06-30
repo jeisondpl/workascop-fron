@@ -82,6 +82,7 @@ const TableHeaderCell = withStyles(theme => ({
 
 
 
+
 export default function LiquidacionCliente({ servicio, codigociiu, arl, abc }) {
   const classes = useStyles()
   const [expanded, setExpanded] = useState(false)
